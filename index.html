@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Notes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="input-container" class="input-container">
+        <div class="input-wrapper">
+          <div class="input-wrapper-header">
+            <h1 id="input-container-heading">Add new note</h1>
+            <button id="closeBtn">✖️</button>
+          </div>
+          <div class="input-wrapper-body">
+            <h2>Note Title</h2>
+            <input id="Titleinput" type="text" placeholder="Title" />
+            <h2>Note Content</h2>
+            <textarea
+              name="Note content"
+              id="NoteContent"
+              placeholder="NoteContent"
+              spellcheck="false"
+            ></textarea>
+            <button id="addnoteBtn">+addNote</button>
+          </div>
+        </div>
+      </div>
+      <div class="header">
+        <h1>Quick Notes</h1>
+        <div class="btn-container">
+          <button id="addBtn">+ Add Note</button>
+          <button id="themeBtn">mode</button>
+        </div>
+        
+        
+      </div>
+      <div class="notes-container">
+        <p id="pretext">🥲 no notes</p>
+
+        <div class="grid-container"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

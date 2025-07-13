@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "QuickNotes",
+  "version": "1.0",
+  "description": "This is a simple Notes Chrome extension.",
+  "action": {
+    "default_icon": {
+      "16": "icon.jpg"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "windows"]
+}
