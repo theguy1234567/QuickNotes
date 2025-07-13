@@ -122,7 +122,7 @@ button {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, auto); 
+  grid-template-rows: repeat(3, auto);
 }
 .box {
   position: relative;
@@ -214,7 +214,7 @@ button {
 
   backdrop-filter: blur(30px);
   min-height: 400px;
-  min-width: 500px;
+  width: 500px;
 }
 
 .input-wrapper-header {
@@ -270,10 +270,20 @@ textarea {
   text-align: start;
 }
 
-@media (max-width:650px) {
-  .grid-container{
+@media (max-width: 650px) {
+  .grid-container {
     grid-template-columns: repeat(1, 100vw);
   }
-  
-  
+
+  input {
+    width: 90%;
+  }
+
+  .input-wrapper{
+    width: 400px;
+  }
+  textarea {
+    width: 90%;
+    min-height: 50px;
+  }
 }
