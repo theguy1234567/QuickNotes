@@ -4,14 +4,18 @@ addEventListener("DOMContentLoaded", () => {
   let Titleinput = document.getElementById("Titleinput");
   let NoteContent = document.getElementById("NoteContent");
   const addNotebtn = document.getElementById("addnoteBtn");
+  const addTaskbtn = document.getElementById("addtaskBtn");
   const closeBtn = document.getElementById("closeBtn");
   const pretext = document.getElementById("pretext");
+  const todolist = document.querySelector(".todolist");
+  const Inputheading = document.getElementById("h2notetitle");
 
   const grid = document.querySelector(".grid-container");
   let NoteIdEdit = null; //store the id of the note
   let NoteIdDel = null; //store the id of the note
 
   let NotesArray = JSON.parse(localStorage.getItem("notes")) || [];
+  let TodoArr = JSON.parse(localStorage.getItem("todo")) || [];
 
   let SavedTheme = localStorage.getItem("themeindex");
 
@@ -29,7 +33,7 @@ addEventListener("DOMContentLoaded", () => {
   if (NotesArray.length != 0) {
     pretext.style.display = "none";
   }
-
+  isTask = false;
   //show the input window
   AddBtn_display.addEventListener("click", () => {
     NoteIdEdit = null;
@@ -40,15 +44,34 @@ addEventListener("DOMContentLoaded", () => {
   closeBtn.addEventListener("click", closeWindow);
   addNotebtn.addEventListener("click", addNotetoarr);
 
-  function showInputCont(titleText, Btntext) {
-    Titleinput.value = "";
-    NoteContent.value = "";
-    const Container = document.getElementById("input-container");
-    const headingText = document.getElementById("input-container-heading");
-    Container.classList.add("show");
-    headingText.textContent = titleText;
-    addNotebtn.textContent = Btntext;
-    Titleinput.focus();
+  function showInputCont(titleText, Btntext, isTask) {
+    if (!isTask) {
+      Titleinput.value = "";
+      NoteContent.value = "";
+      Titleinput.style.display = "block";
+      Inputheading.style.display = "block";
+      const Container = document.getElementById("input-container");
+      const headingText = document.getElementById("input-container-heading");
+      Container.classList.add("show");
+      headingText.textContent = titleText;
+      addNotebtn.style.display = "block";
+      addNotebtn.textContent = Btntext;
+      addTaskbtn.style.display = "none";
+      Titleinput.focus();
+      console.log("note adding");
+    } else {
+      NoteContent.value = "";
+      Titleinput.style.display = "none";
+      Inputheading.style.display = "none";
+      const Container = document.getElementById("input-container");
+      const headingText = document.getElementById("input-container-heading");
+      Container.classList.add("show");
+      headingText.textContent = titleText;
+      addNotebtn.style.display = "none";
+      addTaskbtn.style.display = "block";
+      Titleinput.focus();
+      console.log("task adding");
+    }
   }
 
   //adding to the notesarray
@@ -65,7 +88,7 @@ addEventListener("DOMContentLoaded", () => {
     console.log(noteContent);
 
     if (!noteTitle) {
-      noteTitle = "No title";
+      noteTitle = "Untitled";
     }
 
     if (NoteIdEdit !== null) {
@@ -150,6 +173,7 @@ addEventListener("DOMContentLoaded", () => {
     Titleinput.focus();
   }
   renderAllNotes();
+  rendertodos();
 
   ThemeBtn.addEventListener("click", () => {
     const root = document.documentElement; //to get the root pseudoclass
@@ -163,5 +187,61 @@ addEventListener("DOMContentLoaded", () => {
 
     root.classList.add(new_theme);
     alert("Theme changed to: " + new_theme);
+  });
+
+  //todolist
+  todolist.addEventListener("click", (event) => {
+    if (event.target.tagName === "DIV") {
+      showInputCont("todotask", "add task", true);
+    }
+  });
+
+  addTaskbtn.addEventListener("click", () => {
+    displaytodoitem();
+  });
+  function displaytodoitem() {
+    const todoCont = document.querySelector(".todolist");
+    let TaskContent = NoteContent.value.trim();
+    let todoitem = document.createElement("div");
+    todoitem.classList.add("task");
+    todoitem.innerHTML = `
+      <p>${TaskContent}</p>
+      <button class="todo-btn">complete</button>
+      `;
+    todoCont.appendChild(todoitem);
+    TodoArr.push(TaskContent);
+
+    closeWindow();
+    savetodotasks();
+  }
+
+  function savetodotasks() {
+    localStorage.setItem("todo", JSON.stringify(TodoArr));
+    renderAllNotes;
+  }
+  function rendertodos() {
+    TodoArr.forEach((item) => {
+      const todoCont = document.querySelector(".todolist");
+
+      let todoitem = document.createElement("div");
+      todoitem.classList.add("task");
+      todoitem.innerHTML = `
+      <p>${item}</p>
+      <button class="todo-btn">complete</button>
+      `;
+      todoCont.appendChild(todoitem);
+    });
+  }
+  document.querySelector(".todolist").addEventListener("click", (event) => {
+    if (event.target.classList.contains("todo-btn")) {
+      const taskDiv = event.target.closest(".task");
+      const tasktext = taskDiv.querySelector("p").textContent.trim();
+
+      console.log("complete btn clicked");
+      taskDiv.remove();
+      TodoArr = TodoArr.filter((item) => item != tasktext);
+
+      savetodotasks();
+    }
   });
 });

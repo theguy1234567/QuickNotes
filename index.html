@@ -15,7 +15,7 @@
             <button id="closeBtn">✖️</button>
           </div>
           <div class="input-wrapper-body">
-            <h2>Note Title</h2>
+            <h2 id="h2notetitle">Note Title</h2>
             <input id="Titleinput" type="text" placeholder="Title" />
             <h2>Note Content</h2>
             <textarea
@@ -25,6 +25,7 @@
               spellcheck="false"
             ></textarea>
             <button id="addnoteBtn">+addNote</button>
+            <button id="addtaskBtn">+addtask</button>
           </div>
         </div>
       </div>
@@ -34,10 +35,15 @@
           <button id="addBtn">+ Add Note</button>
           <button id="themeBtn">mode</button>
         </div>
-        
-        
       </div>
       <div class="notes-container">
+        <div class="todo-container">
+          <div class="todolist">
+            <h1>Todo</h1>
+            click to add tasks
+          </div>
+        </div>
+
         <p id="pretext">🥲 no notes</p>
 
         <div class="grid-container"></div>

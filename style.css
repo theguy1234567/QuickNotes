@@ -269,6 +269,37 @@ textarea {
   border-radius: 5px;
   text-align: start;
 }
+.todo-container {
+  display: flex;
+  justify-content: center;
+}
+.todolist {
+  height: 500px;
+  width: 95vw;
+  background-color: rgba(128, 128, 128, 0.493);
+  border-radius: 15px;
+
+  text-align: start;
+  padding: 10px;
+  margin: 10px;
+}
+.task {
+  /* todo list items */
+  background-color: rgba(54, 53, 53, 0.555);
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: mainFont;
+  color: var(--font-color);
+  font-size: 25px;
+}
+.todo-btn {
+  width: 100px;
+  text-align: center;
+}
 
 @media (max-width: 650px) {
   .grid-container {
