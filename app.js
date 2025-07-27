@@ -214,7 +214,6 @@ addEventListener("DOMContentLoaded", () => {
     closeWindow();
     savetodotasks();
   }
-
   function savetodotasks() {
     localStorage.setItem("todo", JSON.stringify(TodoArr));
     renderAllNotes;
@@ -236,11 +235,9 @@ addEventListener("DOMContentLoaded", () => {
     if (event.target.classList.contains("todo-btn")) {
       const taskDiv = event.target.closest(".task");
       const tasktext = taskDiv.querySelector("p").textContent.trim();
-
       console.log("complete btn clicked");
       taskDiv.remove();
       TodoArr = TodoArr.filter((item) => item != tasktext);
-
       savetodotasks();
     }
   });
