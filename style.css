@@ -302,14 +302,15 @@ textarea {
   justify-content: space-between;
   padding: 10px;
   border-radius: 10px;
-  text-align: center;
+  text-align: start;
   font-family: mainFont;
   color: var(--font-color);
   font-size: 25px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .todo-btn {
-  width: 100px;
+  min-width: 100px;
+  min-height: 50px;
   text-align: center;
 }
 
@@ -347,9 +348,11 @@ textarea {
   }
   .task {
     font-size: 20px;
+    margin-top: 15px;
   }
   .task button {
     font-size: 15px;
+    min-height: ;
     padding: 5px;
     text-align: center;
     font-family: NoteFont;
