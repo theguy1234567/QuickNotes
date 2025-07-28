@@ -306,6 +306,7 @@ textarea {
   font-family: mainFont;
   color: var(--font-color);
   font-size: 25px;
+  margin-top: 10px;
 }
 .todo-btn {
   width: 100px;
