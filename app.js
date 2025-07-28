@@ -26,6 +26,7 @@ addEventListener("DOMContentLoaded", () => {
     { id: 1, theme: "darkmode" },
     { id: 2, theme: "forest" },
     { id: 3, theme: "coffee" },
+    { id: 4, theme: "whitemode" },
   ];
 
   const root = document.documentElement;
