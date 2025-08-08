@@ -1,4 +1,5 @@
 addEventListener("DOMContentLoaded", () => {
+  // getting the DOM elements
   const AddBtn_display = document.getElementById("addBtn");
   const ThemeBtn = document.getElementById("themeBtn");
   let Titleinput = document.getElementById("Titleinput");
@@ -11,16 +12,17 @@ addEventListener("DOMContentLoaded", () => {
   const Inputheading = document.getElementById("h2notetitle");
 
   const grid = document.querySelector(".grid-container");
-  let NoteIdEdit = null; //store the id of the note
-  let NoteIdDel = null; //store the id of the note
+  let NoteIdEdit = null; //store the id of the note to edit
+  let NoteIdDel = null; //store the id of the note to delete
 
+  // local storage for Notes todolist and themes
   let NotesArray = JSON.parse(localStorage.getItem("notes")) || [];
   let TodoArr = JSON.parse(localStorage.getItem("todo")) || [];
-
   let SavedTheme = localStorage.getItem("themeindex");
 
   let currThemeIndex = SavedTheme !== null ? parseInt(SavedTheme) : 0;
 
+  //the themes are in ThemeArray that is a list of objects with id and theme
   let ThemeArray = [
     { id: 0, theme: "default" },
     { id: 1, theme: "darkmode" },
@@ -29,17 +31,19 @@ addEventListener("DOMContentLoaded", () => {
     { id: 4, theme: "whitemode" },
   ];
 
+  //on load save the default theme
   const root = document.documentElement;
   root.classList.add(ThemeArray[currThemeIndex].theme);
   if (NotesArray.length != 0) {
     pretext.style.display = "none";
   }
+
+  //setting is isTask to false (used to change the text of headings btns for the input container)
   isTask = false;
-  //show the input window
+  //listener on the +AddNote btn
   AddBtn_display.addEventListener("click", () => {
     NoteIdEdit = null;
     pretext.style.display = "none";
-
     showInputCont("add new ", "+ Add");
   });
   closeBtn.addEventListener("click", closeWindow);

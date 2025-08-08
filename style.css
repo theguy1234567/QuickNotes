@@ -60,12 +60,13 @@
 }
 .whitemode {
   --font-color: black;
-  --header-color: white;
-  --Note-container: white;
+  --header-color: rgb(243, 235, 192);
+  --Note-container: rgb(235, 225, 175);
+  --task-font-color: white;
 
   --box-color: white;
   --box-content: white;
-  --input-container: #05668d;
+  --input-container: rgb(232, 201, 141);
 }
 
 * {
@@ -95,7 +96,7 @@ body {
 }
 .header {
   padding: 20px;
-  margin: 10px;
+  margin: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,7 +119,7 @@ button {
 .notes-container {
   backdrop-filter: blur(5px);
   text-align: center;
-  margin: 10px;
+  margin: 20px;
   border-radius: 5px;
   padding: 20px;
   min-height: 500px;
@@ -283,12 +284,12 @@ textarea {
   justify-content: center;
 }
 .todolist {
-  height: 500px;
+  min-height: 100px;
   width: 95vw;
   background-color: rgba(128, 128, 128, 0.493);
   border-radius: 15px;
   font-family: mainFont;
-  color: rgb(198, 201, 186);
+  color: white;
 
   text-align: start;
   padding: 10px;
@@ -304,7 +305,7 @@ textarea {
   border-radius: 10px;
   text-align: start;
   font-family: mainFont;
-  color: var(--font-color);
+  color: var(--task-font-color);
   font-size: 25px;
   margin-top: 15px;
 }
@@ -314,6 +315,11 @@ textarea {
   text-align: center;
 }
 
+@media (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 650px) {
   .grid-container {
     grid-template-columns: repeat(1, 2fr);
@@ -356,5 +362,23 @@ textarea {
     padding: 5px;
     text-align: center;
     font-family: NoteFont;
+  }
+}
+@media (max-width: 430px) {
+  .header {
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-color);
+    backdrop-filter: blur(3px);
+    font-family: mainFont;
+    font-size: small;
+  }
+  .header button {
+    padding: 10px;
+    margin: 2px;
+    font-size: small;
   }
 }
