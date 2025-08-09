@@ -10,6 +10,7 @@ addEventListener("DOMContentLoaded", () => {
   const pretext = document.getElementById("pretext");
   const todolist = document.querySelector(".todolist");
   const Inputheading = document.getElementById("h2notetitle");
+  const FilterBtn = document.getElementById("filter");
 
   const grid = document.querySelector(".grid-container");
   let NoteIdEdit = null; //store the id of the note to edit
@@ -19,6 +20,7 @@ addEventListener("DOMContentLoaded", () => {
   let NotesArray = JSON.parse(localStorage.getItem("notes")) || [];
   let TodoArr = JSON.parse(localStorage.getItem("todo")) || [];
   let SavedTheme = localStorage.getItem("themeindex");
+  let TagColor = null;
 
   let currThemeIndex = SavedTheme !== null ? parseInt(SavedTheme) : 0;
 
@@ -30,6 +32,7 @@ addEventListener("DOMContentLoaded", () => {
     { id: 3, theme: "coffee" },
     { id: 4, theme: "whitemode" },
   ];
+  
 
   //on load save the default theme
   const root = document.documentElement;
@@ -88,6 +91,7 @@ addEventListener("DOMContentLoaded", () => {
       .filter((word) => word.trim() !== "")
       .map((word) => `👉${word}`)
       .join(`<br>`);
+    let tagsValue = document.getElementById("tags").value;
 
     console.log(noteTitle);
     console.log(noteContent);
@@ -114,6 +118,7 @@ addEventListener("DOMContentLoaded", () => {
         id: NoteID,
         title: noteTitle,
         Notes: noteContent,
+        Tag: tagsValue,
       });
       console.log("note saved");
       localStorage.setItem("notes", JSON.stringify(NotesArray));
@@ -133,6 +138,21 @@ addEventListener("DOMContentLoaded", () => {
     NotesArray.forEach((note) => {
       const box = document.createElement("div");
       box.classList.add("box");
+      switch (note.Tag) {
+        case "personal":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(199, 18, 18, 1)";
+          break;
+        case "work":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(18, 45, 199, 1)";
+          break;
+        case "task":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(18, 199, 87, 1)";
+          break;
+
+        default:
+          break;
+      }
+
       box.innerHTML = `
       <button data-id="${note.id}" class ="editBtn">🖋️</button>
       <br> 
@@ -246,4 +266,65 @@ addEventListener("DOMContentLoaded", () => {
       savetodotasks();
     }
   });
+
+  FilterBtn.addEventListener("change", (event) => {
+    tag = event.target.value;
+    renderfilteredNotes(tag);
+  });
+
+  function renderfilteredNotes(tag) {
+    fillteredNotesarr = NotesArray.filter((note) =>
+      tag === "all" ? renderAllNotes() : note.Tag == tag
+    );
+    console.log(fillteredNotesarr);
+
+    fillteredNotesarr.forEach((note) => {
+      grid.innerHTML = "";
+
+      const box = document.createElement("div");
+      box.classList.add("box");
+      switch (note.Tag) {
+        case "personal":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(199, 18, 18, 1)";
+          break;
+        case "work":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(18, 45, 199, 1)";
+          break;
+        case "task":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(18, 199, 87, 1)";
+          break;
+      }
+      box.innerHTML = `
+      <button data-id="${note.id}" class ="editBtn">🖋️</button>
+      <br> 
+      <h2>${note.title}</h2> 
+      <br>
+      <div class="noteContent">
+        <p>${note.Notes}</p> 
+      </div>
+      <br>
+      <button class="delBtn">❌</button>
+    `;
+
+      grid.appendChild(box);
+      const editBtn = box.querySelector(".editBtn");
+      editBtn.addEventListener("click", () => {
+        NoteIdEdit = note.id;
+        showInputCont("Edit", "save");
+        Titleinput.value = note.title;
+        NoteContent.value = note.Notes.replace(/<br>/g, " ")
+          .split("👉")
+          .filter((word) => word.trim() !== "")
+          .map((word) => `>${word.trim()}`)
+          .join("\n");
+      });
+      const delBtn = box.querySelector(".delBtn");
+      delBtn.addEventListener("click", () => {
+        NoteIdDel = note.id;
+        NotesArray = NotesArray.filter((note) => note.id !== NoteIdDel);
+        localStorage.setItem("notes", JSON.stringify(NotesArray));
+        renderAllNotes(); // Or reapply filter again
+      });
+    });
+  }
 });

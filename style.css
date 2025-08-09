@@ -315,6 +315,15 @@ textarea {
   text-align: center;
 }
 
+/* styling for the tags */
+.tags {
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: larger;
+  margin-top: 5px;
+}
+
 @media (max-width: 900px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
@@ -358,7 +367,7 @@ textarea {
   }
   .task button {
     font-size: 15px;
-    min-height: ;
+    /* min-height: ; */
     padding: 5px;
     text-align: center;
     font-family: NoteFont;
