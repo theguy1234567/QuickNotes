@@ -1,6 +1,3 @@
-
-
-
 <h1>📝 Quick Notes – Chrome Extension</h1>
 
 <p><strong>Quick Notes</strong> is a lightweight, no-fuss Chrome extension built with <strong>HTML, CSS, and JavaScript</strong> that lets you quickly jot down short notes and manage a simple to-do list—all right from your browser.</p>
@@ -18,14 +15,20 @@
   <li><strong>📌 Local Storage</strong> – All notes and tasks are stored locally in your browser—no logins, no cloud dependency.</li>
 </ul>
 
+<hr>
 
+<h2>🌐 Live Demo</h2>
+<p>Try Quick Notes directly from your browser without installing the extension:</p>
+<p>
+  <strong>Open Quick Notes Live</strong> – Hosted on GitHub Pages
+</p>
+<p><em>Tip:</em> In Chrome, click the three-dot menu → <strong>More Tools</strong> → <strong>Create Shortcut...</strong> and choose "Open as Window" to make Quick Notes behave like a mini app. You can also pin it for quick access.</p>
+
+<hr>
 
 <h2>🚀 How to Install</h2>
-
-  
-
-<ol start="2">
-  <li><strong>Download or clone</strong> this repository:</li>
+<ol>
+  <li><strong>Download or clone</strong> this repository.</li>
   <li>Open <strong>Chrome</strong> and go to <code>chrome://extensions/</code>.</li>
   <li><strong>Enable</strong> Developer Mode (top right).</li>
   <li>Click <strong>Load unpacked</strong> and select the project folder.</li>
@@ -49,7 +52,3 @@
   <li>🎯 <strong>User Filters</strong> – Tag-based filtering for better organization.</li>
   <li>🎨 <strong>More Theme Options</strong> – Choose between multiple color themes to suit your mood.</li>
 </ul>
-
-
-
-
