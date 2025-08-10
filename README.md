@@ -50,9 +50,6 @@
   <li>🎨 <strong>More Theme Options</strong> – Choose between multiple color themes to suit your mood.</li>
 </ul>
 
-<hr>
 
 
 
-<h2>📜 License</h2>
-<p>MIT License – Feel free to use and modify this project.</p>
