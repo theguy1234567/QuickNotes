@@ -18,20 +18,14 @@
   <li><strong>📌 Local Storage</strong> – All notes and tasks are stored locally in your browser—no logins, no cloud dependency.</li>
 </ul>
 
-<hr>
 
-<h2>📸 Screenshot</h2>
-<p><em>(Add a screenshot here once you have it)</em></p>
-
-<hr>
 
 <h2>🚀 How to Install</h2>
-<ol>
-  <li><strong>Download or clone</strong> this repository:</li>
-</ol>
-<pre><code>git clone https://github.com/yourusername/quick-notes.git
-</code></pre>
+
+  
+
 <ol start="2">
+  <li><strong>Download or clone</strong> this repository:</li>
   <li>Open <strong>Chrome</strong> and go to <code>chrome://extensions/</code>.</li>
   <li><strong>Enable</strong> Developer Mode (top right).</li>
   <li>Click <strong>Load unpacked</strong> and select the project folder.</li>
