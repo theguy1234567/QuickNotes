@@ -316,7 +316,7 @@ textarea {
 }
 
 /* styling for the tags */
-.tags {
+select {
   padding: 10px;
   border-radius: 5px;
   text-align: center;

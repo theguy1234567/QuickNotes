@@ -32,7 +32,6 @@ addEventListener("DOMContentLoaded", () => {
     { id: 3, theme: "coffee" },
     { id: 4, theme: "whitemode" },
   ];
-  
 
   //on load save the default theme
   const root = document.documentElement;
@@ -52,6 +51,7 @@ addEventListener("DOMContentLoaded", () => {
   closeBtn.addEventListener("click", closeWindow);
   addNotebtn.addEventListener("click", addNotetoarr);
 
+  //input container for taking input from user
   function showInputCont(titleText, Btntext, isTask) {
     if (!isTask) {
       Titleinput.value = "";
@@ -147,6 +147,9 @@ addEventListener("DOMContentLoaded", () => {
           break;
         case "task":
           box.style.boxShadow = "inset 5px 0px 1px rgba(18, 199, 87, 1)";
+          break;
+        case "Idea":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(166, 233, 9, 1)";
           break;
 
         default:
@@ -292,6 +295,9 @@ addEventListener("DOMContentLoaded", () => {
           break;
         case "task":
           box.style.boxShadow = "inset 5px 0px 1px rgba(18, 199, 87, 1)";
+          break;
+        case "Idea":
+          box.style.boxShadow = "inset 5px 0px 1px rgba(166, 233, 9, 1)";
           break;
       }
       box.innerHTML = `
