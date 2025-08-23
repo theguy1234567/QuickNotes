@@ -275,6 +275,8 @@ addEventListener("DOMContentLoaded", () => {
     renderfilteredNotes(tag);
   });
 
+  // to display filtered tags
+
   function renderfilteredNotes(tag) {
     fillteredNotesarr = NotesArray.filter((note) =>
       tag === "all" ? renderAllNotes() : note.Tag == tag
