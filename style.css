@@ -19,7 +19,7 @@
   --font-color: white;
   --header-color: #92b4f4cc;
   --Note-container: #4b69a0;
-
+  --filter-color: rgb(87, 87, 232);
   --box-color: #2a0c4e;
   --box-content: #1d0a35;
   --input-container: #05668d;
@@ -28,6 +28,7 @@
   --font-color: #dcfffd;
   --header-color: #262322;
   --Note-container: #7e8987;
+  --filter-color: rgb(0, 0, 0);
 
   --box-color: #1f1d20;
   --box-content: #121114;
@@ -39,6 +40,7 @@
   --font-color: white;
   --header-color: #0dab768a;
   --Note-container: #139a4221;
+  --filter-color: rgb(25, 104, 47);
 
   --box-color: #0b5d1e;
   --box-content: #053b06;
@@ -52,6 +54,7 @@
   --font-color: white;
   --header-color: #563f1bde;
   --Note-container: #af8e589c;
+  --filter-color: rgb(222, 187, 31);
 
   --box-color: #917343;
   --box-content: #432818;
@@ -63,6 +66,7 @@
   --header-color: rgb(243, 235, 192);
   --Note-container: rgb(235, 225, 175);
   --task-font-color: white;
+  --filter-color: rgb(11, 11, 13);
 
   --box-color: white;
   --box-content: white;
@@ -314,6 +318,16 @@ textarea {
   min-height: 50px;
   text-align: center;
 }
+#filter {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+}
+option {
+  color: var(--filter-color);
+}
+
 
 /* styling for the tags */
 select {
